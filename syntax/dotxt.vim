@@ -4,7 +4,7 @@ if exists("b:current_syntax")
 endif
 
 " Priority at start: (A), (B), ..., (Z)
-syntax match dotxtPriority "^[ \t]*\zs\([^ \t]\+\)\ze"
+syntax match dotxtPriority "^[ \t]*\zs([^ \t]\+)\ze"
 " Hints: +project, @context, #tag
 syntax match dotxtProject /+[^ \t]\+/
 syntax match dotxtContext /@[^ \t]\+/
