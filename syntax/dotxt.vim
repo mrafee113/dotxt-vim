@@ -19,8 +19,8 @@ syntax match dotxtLud      /\$lud=[^ \t]\+/
 syntax match dotxtEvery    /\$every=[^ \t]\+/
 syntax match dotxtR        /\$r=[^ \t]\+/
 " Numeric fields
-syntax match dotxtId       /\$id=[0-9]\+/
-syntax match dotxtP        /\$P=[0-9]\+/
+syntax match dotxtId       /\$-\?id=[^ \t]\+/
+syntax match dotxtP        /\$P=[^ \t]\+/
 " progress
 syntax match dotxtp        /\$p=[^ \t]\+/
 
