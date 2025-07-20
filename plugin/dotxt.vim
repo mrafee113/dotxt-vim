@@ -40,7 +40,8 @@ function! s:DotxtSort()
 	else
 		let l:sub = l:full
 	endif
-	let l:cmd = printf('%s %s', s:dotxt_bin, shellescape(l:sub))
+	let l:sub = substitute(l:sub, '^/', '', '')
+	let l:cmd = printf('%s sort %s', s:dotxt_bin, shellescape(l:sub))
 	call system(l:cmd)
 	silent! edit!
 	echo 'Sorted: ' . l:sub
