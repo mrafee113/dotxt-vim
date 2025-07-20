@@ -5,7 +5,7 @@ augroup END
 
 function! s:dotxt_commands() abort
   " Sort tasks
-  command! DotxtSort         echo "TODO: sort tasks (implement DotxtSort)"
+  " command! DotxtSort         echo "TODO: sort tasks (implement DotxtSort)"
   command! DotxtSortProjects echo "TODO: sort tasks by +projects"
   command! DotxtSortContexts echo "TODO: sort tasks by @contexts"
   command! DotxtSortDates    echo "TODO: sort tasks by date"
@@ -22,4 +22,26 @@ endfunction
 
 function! DotxtAddPriority(prio) abort
   echo "TODO: add priority (" . a:prio . ") to current task"
+endfunction
+
+if exists("b:did_dotxt_plugin")
+	finish
+endif
+
+let b:did_dotxt_plugin = 1
+
+let s:dotxt_prefix = '/home/francis/.config/dotxt/todos'
+let s:dotxt_bin = '/home/francis/Studio/Projects/dotxt/dotxt'
+
+function! s:DotxtSort()
+	let l:full = expand('%:p')
+	if l:full[:len(s:dotxt_prefix)-1] ==# s:dotxt_prefix
+		let l:sub = l:full[len(s:dotxt_prefix):]
+	else
+		let l:sub = l:full
+	endif
+	let l:cmd = printf('%s %s', s:dotxt_bin, shellescape(l:sub))
+	call system(l:cmd)
+	silent! edit!
+	echo 'Sorted: ' . l:sub
 endfunction
