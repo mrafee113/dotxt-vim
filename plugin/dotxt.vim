@@ -45,3 +45,6 @@ function! s:DotxtSort()
 	silent! edit!
 	echo 'Sorted: ' . l:sub
 endfunction
+
+command! DotxtSort call <SID>DotxtSort()
+nnoremap <buffer> <leader>s :DotxtSort<CR>
